@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "keyvalue-pipe"
+  "defaultProject": "keyvalue-pipe",
+  "cli": {
+    "analytics": false
+  }
 }
