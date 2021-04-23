@@ -2,7 +2,7 @@
 Angular supports iteration over map in html templates through `keyValue` pipe. This repository demonstrate the use of keyValue and sorting feature supported with this.
 
 ## Problem Statement
-There is an list of registered vehicles provided to application which give details about the vehicle number and the company name of the vehicle.
+There is an list of registered vehicles provided to application which gives details about the number and the company name of the vehicles.
 
 ```typescript
     export const vehicleList = [
@@ -24,7 +24,7 @@ There is an list of registered vehicles provided to application which give detai
         ...
   ]
 ```
-Now app got requirement to show the vehicle company name and total number of vehicle registered for each brand.
+Now suppose app has requirement to show the vehicle company name and total number of vehicles registered for each brand in a table.
 
 ## Solution
 
@@ -37,10 +37,10 @@ It can be done like below
       this.vehicleCategories.set(vehicle.company, (this.vehicleCategories.get(vehicle.company) ?? 0) + 1);
     });
 ```
-Now `vehicleCategories` has key/value pair of vehichle company and total number of vehicle registed of that companies.
+Now `vehicleCategories` has key/value pair of vehicle companies and total number of vehicles registed for each companies.
 
 ### Iterating map in template file
-Now application can iterate map in template file with the keyValue pipe like below
+Angular support direct iteration of map using it's structural directive `ngFor` and with the help of keyValue pipe. Now application can iterate map in template file in following way
 ```html
 <div>
   <h1>Vehicle List</h1>
@@ -56,11 +56,11 @@ Now application can iterate map in template file with the keyValue pipe like bel
   </table>
 </div>
 ```
-It will give result like below
+This will result in a table like below
 
 ![](doc-res/vehicle-unsorted.png)
 ### Showing result sorted
-Seeing above picture clearing give urge of seeing the result in sorted order. This is possible as keyValue pipe support sorting function as parameter. 
+Seeing above picture clearing gives urge of seeing the result in sorted order. This is possible as `keyValue` pipe support sorting function as parameter. 
 We can rewrite our template as below
 ```html
 <div>
@@ -77,13 +77,13 @@ We can rewrite our template as below
   </table>
 </div>
 ```
-Now we can write the sort function in component.ts file for decending order  like below
+Now sort function can be written in component.ts file for decending order like this
 ```typescript
 sort(vehichleA: {key: string; value: number;}, vehichleB: {key: string; value: number;}) {
     return vehichleB.value - vehichleA.value;
   }
 ```
-Loading after all the above changes suggested for sorting we will get view as follow
+After doing all the above suggested changes, we will get sorted list of tables
 
 ![](doc-res/vehicle-sorted.png)
 
